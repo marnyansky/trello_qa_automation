@@ -1,0 +1,4 @@
+smth@test.com;password;There isn't an account for this email
+smthtest;123;There isn't an account for this username
+;anypassword;Missing email
+12345@test.com;;There isn't an account for this email
