@@ -21,7 +21,7 @@ public class HomePageTests extends TestBase {
 
     @Test
     public void verifyAboutLinkInFooterTextTest() {
-        LogLog4j.startTestCase("verifyFooterIsLoadedTest");
+        LogLog4j.startTestCase("verifyAboutLinkInFooterTextTest");
         LogLog4j.info("Scrolling down the current page (homepage) by 4000px vertically");
         homePage.scrollByCoordinates(0, 4000);
 
@@ -34,7 +34,7 @@ public class HomePageTests extends TestBase {
 
     @Test(groups = "SmokeTesting")
     public void verifyAboutLinkInFooterTextAdvancedTest() {
-        LogLog4j.startTestCase("verifyFooterIsLoadedAdvancedTest");
+        LogLog4j.startTestCase("verifyAboutLinkInFooterTextAdvancedTest");
         LogLog4j.info("Scrolling down the current page (homepage) to 'About' link");
         homePage.scrollToFooter();
 

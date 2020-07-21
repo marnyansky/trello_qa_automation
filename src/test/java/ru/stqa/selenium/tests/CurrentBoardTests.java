@@ -8,6 +8,7 @@ import ru.stqa.selenium.pages.PgBoardsHelper;
 import ru.stqa.selenium.pages.PgCurrentBoardHelper;
 import ru.stqa.selenium.pages.PgLoginHelper;
 import ru.stqa.selenium.util.DataProviders;
+import ru.stqa.selenium.util.LogLog4j;
 
 public class CurrentBoardTests extends TestBase {
 
@@ -19,6 +20,7 @@ public class CurrentBoardTests extends TestBase {
 
     @BeforeMethod
     public void initTests() {
+        LogLog4j.info("===== Setting up CurrentBoardTests environment - method initTests()");
         loginPage = PageFactory.initElements(driver, PgLoginHelper.class);
         boardsPage = PageFactory.initElements(driver, PgBoardsHelper.class);
         currentBoardPage = PageFactory.initElements(driver, PgCurrentBoardHelper.class);
@@ -34,10 +36,12 @@ public class CurrentBoardTests extends TestBase {
         boardsPage.openCurrentBoard();
 
         currentBoardPage.waitUntilPageIsLoaded();
+        LogLog4j.info("===== CurrentBoardTests environment setup complete");
     }
 
     @Test(groups = "SmokeTesting")
     public void createNewListTest() {
+        LogLog4j.startTestCase("createNewListTest");
         int initialNumberOfLists = currentBoardPage.getNumberOfLists();
 
         currentBoardPage.createNewList()
@@ -53,6 +57,7 @@ public class CurrentBoardTests extends TestBase {
 
     @Test(dataProviderClass = DataProviders.class, dataProvider = "dataProviderFifth")
     public void createNewCardTest(String randomCardTitle) {
+        LogLog4j.startTestCase("createNewCardTest");
         currentBoardPage.createNewListIfNoLists("SeleniumList with cards");
 
         int initialNumberOfCards = currentBoardPage.getNumberOfCards();

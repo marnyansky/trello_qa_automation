@@ -36,18 +36,12 @@ public class PgLoginHelper extends PageBase {
         super(driver);
     }
 
+    //--- click-only methods
     public PgLoginHelper openLoginPage() {
         LogLog4j.info("> Launching: class PgLoginHelper - method openLoginPage()");
         LogLog4j.info(">> Clicking on 'loginLink'");
         loginLink.click();
         return this;
-    }
-
-    @Override
-    public void waitUntilPageIsLoaded() {
-        LogLog4j.info("> Launching: class PgLoginHelper - method waitUntilPageIsLoaded()");
-        LogLog4j.info(">> Waiting until 'loginButton' is clickable...");
-        waitUntilElementIsClickable(loginButton, 10);
     }
 
     public PgLoginHelper clickLoginButton() {
@@ -77,8 +71,13 @@ public class PgLoginHelper extends PageBase {
 
     public PgLoginHelper inputIncorrectLoginAndClickLogin(String incorrectLogin)
             throws InterruptedException {
+        LogLog4j.info("> Launching: class PgLoginHelper - " +
+                "method inputIncorrectLoginAndClickLogin()");
+        LogLog4j.info(">> Filling 'loginField', value '" + incorrectLogin + "'");
         fillField(loginField, incorrectLogin);
-        Thread.sleep(500); // wait time for login evaluation by Trello
+        LogLog4j.info(">> Waiting while login being evaluated by Trello...");
+        Thread.sleep(500);
+        LogLog4j.info(">> Clicking on 'loginButton'");
         clickLoginButton();
         return this;
     }
@@ -119,32 +118,61 @@ public class PgLoginHelper extends PageBase {
         return this;
     }
 
-    //--- wait for error message methods
+    //--- get error message methods
+    public String getErrorMessageForNoLogin() {
+        LogLog4j.info("> Launching: class PgLoginHelper - " +
+                "method getErrorMessageForNoLogin()");
+        LogLog4j.info(">> Getting text of error message for no login...");
+        return errorMessageForNoLogin.getText();
+    }
+
+    public String getErrorMessageForLoginError() {
+        LogLog4j.info("> Launching: class PgLoginHelper - " +
+                "method getErrorMessageForLoginError()");
+        LogLog4j.info(">> Getting text of error message for login error...");
+        return errorMessageForLoginError.getText();
+    }
+
+    public String getErrorMessageForNonValidPassword() {
+        LogLog4j.info("> Launching: class PgLoginHelper - " +
+                "method getErrorMessageForNonValidPassword()");
+        LogLog4j.info(">> Getting text of error message for non-valid password...");
+        return errorMessageForNonValidPassword.getText();
+    }
+
+    //--- wait methods
+    @Override
+    public void waitUntilPageIsLoaded() {
+        LogLog4j.info("> Launching: class PgLoginHelper - " +
+                "method waitUntilPageIsLoaded()");
+        LogLog4j.info(">> Waiting until 'loginButton' is clickable...");
+        waitUntilElementIsClickable(loginButton, 10);
+    }
+
     public void waitUntilErrorMessageForNoLogin() {
+        LogLog4j.info("> Launching: class PgLoginHelper - " +
+                "method waitUntilErrorMessageForNoLogin()");
+        LogLog4j.info(">> Waiting until error message for no login is visible...");
         waitUntilElementIsVisible(errorMessageForNoLogin, 3);
     }
 
     public void waitUntilErrorMessageForLoginError() {
-        LogLog4j.info("> Launching: class PgLoginHelper - method waitUntilErrorMessageForLoginError()");
+        LogLog4j.info("> Launching: class PgLoginHelper - " +
+                "method waitUntilErrorMessageForLoginError()");
         LogLog4j.info(">> Waiting until error message for login error is visible...");
         waitUntilElementIsVisible(errorMessageForLoginError, 3);
     }
 
     public void waitUntilErrorMessageForNonValidPassword() {
+        LogLog4j.info("> Launching: class PgLoginHelper - " +
+                "method waitUntilErrorMessageForNonValidPassword()");
+        LogLog4j.info(">> Waiting until error message for non-valid password is visible...");
         waitUntilElementIsVisible(errorMessageForNonValidPassword, 5);
     }
 
-    //--- get error message methods
-    public String getErrorMessageForNoLogin() {
-        return errorMessageForNoLogin.getText();
-    }
-
-    public String getErrorMessageForLoginError() {
-        return errorMessageForLoginError.getText();
-    }
-
-    public String getErrorMessageForNonValidPassword() {
-        return errorMessageForNonValidPassword.getText();
-    }
+    //TODO LogLog4j project-level logging completion control
+    //TODO LogLog4j indent symbols (>>, >) control
+    //TODO string length control (95)
+    //TODO verify method names in LogLog4j (in helper classes)
 
 }

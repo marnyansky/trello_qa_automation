@@ -27,14 +27,6 @@ public class PgProfileHelper extends PageBase {
         super(driver);
     }
 
-    //--- wait methods
-    @Override
-    public void waitUntilPageIsLoaded() {
-        LogLog4j.info("> Launching: class PgProfileHelper - method waitUntilPageIsLoaded()");
-        LogLog4j.info(">> Waiting until button 'Save' in the lower part of the page is clickable...");
-        waitUntilElementIsClickable(saveButton, 10);
-    }
-
     //--- get label text methods
     public String getLabelTextFromRightUpperButton() {
         return rightUpperAbbreviationOnMemberMenuButton.getText();
@@ -53,6 +45,14 @@ public class PgProfileHelper extends PageBase {
         WebElement lowerUserName = driver.findElement(By
                 .xpath("//input[@value='" + USERNAME + "']"));
         return lowerUserName.getAttribute("value");
+    }
+
+    //--- wait methods
+    @Override
+    public void waitUntilPageIsLoaded() {
+        LogLog4j.info("> Launching: class PgProfileHelper - method waitUntilPageIsLoaded()");
+        LogLog4j.info(">> Waiting until button 'Save' in the lower part of the page is clickable...");
+        waitUntilElementIsClickable(saveButton, 10);
     }
 
 }

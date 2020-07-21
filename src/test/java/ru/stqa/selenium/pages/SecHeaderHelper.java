@@ -25,6 +25,8 @@ public class SecHeaderHelper extends PageBase {
     }
 
     public String getButtonBoardsText() {
+        LogLog4j.info("> Launching: class SecHeaderHelper - getButtonBoardsText()");
+        LogLog4j.info(">> Getting text of 'Boards' header button (icon)");
         return boardsHeaderButton.getText();
     }
 

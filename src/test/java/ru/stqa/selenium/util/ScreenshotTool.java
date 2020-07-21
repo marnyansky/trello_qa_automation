@@ -16,6 +16,11 @@ public class ScreenshotTool {
     private File tmpFile;
     private File screenshot;
 
+    private ScreenshotTool() {
+        throw new UnsupportedOperationException("Empty constructor " +
+                "for ScreenshotTool is not supported");
+    }
+
     //--- CTOR
     public ScreenshotTool(WebDriver driver) {
         screenshotFileName = "scr-"

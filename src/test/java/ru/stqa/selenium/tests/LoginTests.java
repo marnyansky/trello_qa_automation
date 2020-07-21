@@ -13,8 +13,6 @@ import ru.stqa.selenium.util.LogLog4j;
 
 public class LoginTests extends TestBase {
 
-    //TODO logging
-
     private PgLoginHelper loginPage;
     private PgBoardsHelper boardsPage;
     private SecHeaderHelper header;
@@ -22,6 +20,7 @@ public class LoginTests extends TestBase {
 
     @BeforeMethod
     public void initTests() {
+        LogLog4j.info("===== Setting up LoginTests environment - method initTests()");
         loginPage = PageFactory.initElements(driver, PgLoginHelper.class);
         boardsPage = PageFactory.initElements(driver, PgBoardsHelper.class);
         boardsPage.setBoardTitle("QA Haifa56");
@@ -30,6 +29,7 @@ public class LoginTests extends TestBase {
 
         loginPage.openLoginPage()
                 .waitUntilPageIsLoaded();
+        LogLog4j.info("===== LoginTests environment setup complete");
     }
 
     @Test(groups = "SmokeTesting")
@@ -44,18 +44,25 @@ public class LoginTests extends TestBase {
         header.waitUntilPageIsLoaded();
 
         LogLog4j.info("Performing test result verification (assert): " +
-                "The text on the boardsHeaderButton should be 'Boards'");
+                "The text on the 'Boards' header button (icon) should be 'Boards'");
         Assert.assertEquals(header.getButtonBoardsText(),
                 "Boards",
-                "Error! The text on the boardIcon 'Boards' is not 'Boards'!");
+                "Error! The text on the 'Boards' " +
+                        "header button (icon) is not 'Boards'!");
         LogLog4j.endTestCase();
     }
 
     @Test
     public void loginNoLoginNoPasswordTestNegative() {
+        LogLog4j.startTestCase("loginNoLoginNoPasswordTestNegative");
+        LogLog4j.info("Clicking on 'Log In' button " +
+                "and waiting until error message for no login is visible");
         loginPage.clickLoginButton()
                 .waitUntilErrorMessageForNoLogin();
 
+        LogLog4j.info("Performing test result verification (assert): " +
+                "The actual error message for no login corresponds " +
+                "to the expected error message");
         Assert.assertEquals(loginPage.getErrorMessageForNoLogin(),
                 "Missing email",
                 "Error! The text of the message is not 'Missing email'!");
@@ -64,11 +71,17 @@ public class LoginTests extends TestBase {
     @Test(dataProviderClass = DataProviders.class, dataProvider = "dataProviderFirst")
     public void loginLoginErrorTestNegativeDp1(
             String login, String password, String message) {
+        LogLog4j.startTestCase("loginLoginErrorTestNegativeDp1: '"
+                + login + "', '" + password + "', '" + message + "'");
+        LogLog4j.info("Logging in to the system: '" + login + "', '" + password + "'");
         loginPage.inputLogin(login)
                 .inputPassword(password)
                 .clickLoginButton()
                 .waitUntilErrorMessageForLoginError();
 
+        LogLog4j.info("Performing test result verification (assert): " +
+                "The actual error message for login error corresponds " +
+                "to the expected error message ('" + message + "')");
         Assert.assertEquals(loginPage.getErrorMessageForLoginError(),
                 message,
                 "Error! The error message for login error is incorrect!");
@@ -86,8 +99,8 @@ public class LoginTests extends TestBase {
                 .waitUntilErrorMessageForLoginError();
 
         LogLog4j.info("Performing test result verification (assert): " +
-                "The actual error message for login error corresponds expected error message " +
-                "('" + message + "')");
+                "The actual error message for login error corresponds " +
+                "to the expected error message ('" + message + "')");
         Assert.assertEquals(loginPage.getErrorMessageForLoginError(),
                 message,
                 "Error! The error message for login error is incorrect!");
@@ -96,11 +109,17 @@ public class LoginTests extends TestBase {
 
     @Test(dataProviderClass = DataProviders.class, dataProvider = "dataProviderThird")
     public void loginLoginErrorTestNegativeDp3(String login, String password) {
+        LogLog4j.startTestCase("loginLoginErrorTestNegativeDp3: '"
+                + login + "', '" + password + "'");
+        LogLog4j.info("Logging in to the system: '" + login + "', '" + password + "'");
         loginPage.inputLogin(login)
                 .inputPassword(password)
                 .clickLoginButton()
                 .waitUntilErrorMessageForLoginError();
 
+        LogLog4j.info("Performing test result verification (assert): " +
+                "The actual error message for login error corresponds " +
+                "to the expected error message");
         Assert.assertEquals(loginPage.getErrorMessageForLoginError(),
                 "There isn't an account for this email",
                 "The error message for login error is incorrect!");
@@ -108,8 +127,15 @@ public class LoginTests extends TestBase {
 
     @Test(dataProviderClass = DataProviders.class, dataProvider = "DpNegativePasswordIncorrect")
     public void loginNonValidPasswordTestNegativeDp(String login, String password) {
+        LogLog4j.startTestCase("loginNonValidPasswordTestNegativeDp: '"
+                + login + "', '" + password + "'");
+        LogLog4j.info("Logging in to the system: '" + login + "', '" + password + "'");
         loginPage.loginAsAtlassian(login, password)
                 .waitUntilErrorMessageForNonValidPassword();
+
+        LogLog4j.info("Performing test result verification (assert): " +
+                "The actual error message for non-valid password corresponds " +
+                "to the expected error message");
         Assert.assertTrue(loginPage.getErrorMessageForNonValidPassword()
                         .contains("Incorrect email address and / or password."),
                 "Error! No error message displayed or it's text is incorrect!");

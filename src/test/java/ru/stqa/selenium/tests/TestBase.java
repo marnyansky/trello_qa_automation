@@ -76,8 +76,8 @@ public abstract class TestBase {
     public void tearDownForTest(ITestResult result) {
         if (result.getStatus() == ITestResult.FAILURE) {
             ScreenshotTool scrTool = new ScreenshotTool(driver);
-            LogLog4j.error("Test failure. See screenshot file "
-                    + scrTool.getScreenshotName() + " for details");
+            LogLog4j.error("Test failed. See screenshot file '"
+                    + scrTool.getScreenshotName() + "' for details");
         }
         driver.quit();
     }

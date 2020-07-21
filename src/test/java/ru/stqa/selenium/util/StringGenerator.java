@@ -16,7 +16,8 @@ public final class StringGenerator {
     private boolean usePunctuation;
 
     private StringGenerator() {
-        throw new UnsupportedOperationException("Empty constructor is not supported for StringGenerator");
+        throw new UnsupportedOperationException("Empty constructor " +
+                "for StringGenerator is not supported");
     }
 
     private StringGenerator(StringGeneratorBuilder builder) {

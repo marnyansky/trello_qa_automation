@@ -20,7 +20,6 @@ public class PgBoardsHelper extends PageBase {
         this.boardTitle = boardTitle;
     }
 
-    //--- click-only methods
     public void openCurrentBoard() {
         LogLog4j.info("> Launching: class PgBoardsHelper - method openCurrentBoard()");
         LogLog4j.info(">> Searching for tile with boardTitle '" + boardTitle + "'");
@@ -30,7 +29,6 @@ public class PgBoardsHelper extends PageBase {
         currentBoard.click();
     }
 
-    //--- wait methods
     @Override
     public void waitUntilPageIsLoaded() {
         LogLog4j.info("> Launching: class PgBoardsHelper - method waitUntilPageIsLoaded()");
