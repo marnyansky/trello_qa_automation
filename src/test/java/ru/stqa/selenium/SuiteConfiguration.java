@@ -37,7 +37,8 @@ public class SuiteConfiguration {
             if (value.toLowerCase().equals("true") || value.toLowerCase().equals("false")) {
                 capabilities.setCapability(name, Boolean.valueOf(value));
             } else if (value.startsWith("file:")) {
-                capabilities.setCapability(name, new File(".", value.substring(5)).getCanonicalFile().getAbsolutePath());
+                capabilities.setCapability(name, new File(".",
+                        value.substring(5)).getCanonicalFile().getAbsolutePath());
             } else {
                 capabilities.setCapability(name, value);
             }

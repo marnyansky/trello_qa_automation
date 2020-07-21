@@ -26,8 +26,10 @@ public class SecMemberMenuHelper extends PageBase {
 
     //--- click-only methods
     public void openProfileAndVisibilityPage() {
-        LogLog4j.info("> Launching: class SecMemberMenuHelper - method openProfileAndVisibilityPage()");
-        LogLog4j.info(">> Clicking on '" + profileAndVisibilityMenuItem.getText() + "' menu item");
+        LogLog4j.info("> Launching: class SecMemberMenuHelper - " +
+                "method openProfileAndVisibilityPage()");
+        LogLog4j.info(">> Clicking on '"
+                + profileAndVisibilityMenuItem.getText() + "' menu item");
         profileAndVisibilityMenuItem.click();
     }
 
@@ -47,7 +49,8 @@ public class SecMemberMenuHelper extends PageBase {
     //--- wait methods
     @Override
     public void waitUntilPageIsLoaded() {
-        LogLog4j.info("> Launching: class SecMemberMenuHelper - method waitUntilPageIsLoaded()");
+        LogLog4j.info("> Launching: class SecMemberMenuHelper - " +
+                "method waitUntilPageIsLoaded()");
         LogLog4j.info(">> Waiting until 'Profile and Visibility' menu item is clickable...");
         waitUntilElementIsClickable(profileAndVisibilityMenuItem, 15);
         LogLog4j.info(">> Waiting until 'Activity' menu item is clickable...");

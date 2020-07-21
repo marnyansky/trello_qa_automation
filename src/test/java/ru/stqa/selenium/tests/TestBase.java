@@ -37,7 +37,7 @@ public abstract class TestBase {
     public void initTestSuite() throws IOException {
         SuiteConfiguration config = new SuiteConfiguration();
         baseUrl = config.getProperty("site.url");
-        if (config.hasProperty("grid.url") && !"".equals(config.getProperty("grid.url"))) {
+        if (config.hasProperty("grid.url") && !"" .equals(config.getProperty("grid.url"))) {
             gridHubUrl = new URL(config.getProperty("grid.url"));
         }
         capabilities = config.getCapabilities();
@@ -46,7 +46,9 @@ public abstract class TestBase {
     @BeforeMethod
     public void initWebDriver() {
         myListener = new ListenerMethodsImpl();
-        driver = new EventFiringWebDriver(WebDriverPool.DEFAULT.getDriver(gridHubUrl, capabilities));
+        driver = new EventFiringWebDriver(
+                WebDriverPool.DEFAULT.getDriver(gridHubUrl, capabilities)
+        );
         driver.register(myListener);
         homePage = PageFactory.initElements(driver, PgHomePageHelper.class);
 
@@ -56,7 +58,8 @@ public abstract class TestBase {
     }
 
     private void enableVerboseLogging() {
-        System.setProperty("webdriver.chrome.logfile", "c:\\_qa\\_test\\_qaauto\\chromedriver.log");
+        System.setProperty("webdriver.chrome.logfile",
+                "c:\\_qa\\_test\\_qaauto\\chromedriver.log");
         System.setProperty("webdriver.chrome.verboseLogging", "true");
     }
 

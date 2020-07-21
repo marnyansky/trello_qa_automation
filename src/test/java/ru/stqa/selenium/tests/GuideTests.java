@@ -9,8 +9,6 @@ import ru.stqa.selenium.util.LogLog4j;
 
 public class GuideTests extends TestBase {
 
-    //TODO run on server
-
     private PgLoginHelper loginPage;
     private SecHeaderHelper header;
     private SecMemberMenuHelper memberMenu;
@@ -46,7 +44,8 @@ public class GuideTests extends TestBase {
     @Test
     public void verifyGuidePageTitleTest() {
         LogLog4j.startTestCase("verifyGuidePageTitleTest");
-        LogLog4j.info("Switching to 'Getting Started Guide' page and waiting until it is loaded");
+        LogLog4j.info("Switching to 'Getting Started Guide' page and " +
+                "waiting until it is loaded");
         guidePage.switchToGuidePage()
                 .waitUntilPageIsLoaded();
 

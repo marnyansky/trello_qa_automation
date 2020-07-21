@@ -66,6 +66,7 @@ public class LoginTests extends TestBase {
         Assert.assertEquals(loginPage.getErrorMessageForNoLogin(),
                 "Missing email",
                 "Error! The text of the message is not 'Missing email'!");
+        LogLog4j.endTestCase();
     }
 
     @Test(dataProviderClass = DataProviders.class, dataProvider = "dataProviderFirst")
@@ -85,6 +86,7 @@ public class LoginTests extends TestBase {
         Assert.assertEquals(loginPage.getErrorMessageForLoginError(),
                 message,
                 "Error! The error message for login error is incorrect!");
+        LogLog4j.endTestCase();
     }
 
     @Test(dataProviderClass = DataProviders.class, dataProvider = "dataProviderSecond")
@@ -123,9 +125,11 @@ public class LoginTests extends TestBase {
         Assert.assertEquals(loginPage.getErrorMessageForLoginError(),
                 "There isn't an account for this email",
                 "The error message for login error is incorrect!");
+        LogLog4j.endTestCase();
     }
 
-    @Test(dataProviderClass = DataProviders.class, dataProvider = "DpNegativePasswordIncorrect")
+    @Test(dataProviderClass = DataProviders.class,
+            dataProvider = "DpNegativePasswordIncorrect")
     public void loginNonValidPasswordTestNegativeDp(String login, String password) {
         LogLog4j.startTestCase("loginNonValidPasswordTestNegativeDp: '"
                 + login + "', '" + password + "'");
@@ -139,6 +143,7 @@ public class LoginTests extends TestBase {
         Assert.assertTrue(loginPage.getErrorMessageForNonValidPassword()
                         .contains("Incorrect email address and / or password."),
                 "Error! No error message displayed or it's text is incorrect!");
+        LogLog4j.endTestCase();
     }
 
 }

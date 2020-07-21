@@ -46,14 +46,22 @@ public class DataProviders {
         return userData.iterator();
     }
 
-    //--- bad practice to store test data inside a method
+    //--- bad practice to keep test data inside a method
     @DataProvider
     public static Iterator<Object[]> dataProviderSecond() {
         List<Object[]> data = new ArrayList();
-        data.add(new Object[]{"smth@test.com", "password", "There isn't an account for this email"});
-        data.add(new Object[]{"smthtest", "psw2", "There isn't an account for this username"});
-        data.add(new Object[]{"", "anypssword", "Missing email"});
-        data.add(new Object[]{"12345@test.com", "", "There isn't an account for this email"});
+        data.add(new Object[]{
+                "smth@test.com", "password", "There isn't an account for this email"
+        });
+        data.add(new Object[]{
+                "smthtest", "psw2", "There isn't an account for this username"
+        });
+        data.add(new Object[]{
+                "", "anypssword", "Missing email"
+        });
+        data.add(new Object[]{
+                "12345@test.com", "", "There isn't an account for this email"
+        });
 
         return data.iterator();
     }

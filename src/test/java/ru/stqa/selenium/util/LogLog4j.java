@@ -5,9 +5,10 @@ import org.apache.log4j.Logger;
 public abstract class LogLog4j {
 
     // Initialize Log4j log s
-    private static Logger Log = Logger.getLogger(LogLog4j.class.getName());//
+    private static Logger Log = Logger.getLogger(LogLog4j.class.getName());
 
-    // This is to print log for the beginning of the test case, as we usually run so many test cases as a test suite
+    // This is to print log for the beginning of the test case,
+    // as we usually run so many test cases as a test suite
     public static void startTestCase(String sTestCaseName) {
         Log.info("");
         Log.info("*****************************");

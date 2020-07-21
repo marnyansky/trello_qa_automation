@@ -17,15 +17,17 @@ public class PgActivityHelper extends PageBase {
         super(driver);
     }
 
+    public String getLatestActivityRecordText() {
+        LogLog4j.info("> Launching: class PgActivityHelper - getLatestActivityRecordText()");
+        LogLog4j.info(">> Getting full text of latest activity record");
+        return activityRecordsList.get(0).getText();
+    }
+
     @Override
     public void waitUntilPageIsLoaded() {
         LogLog4j.info("> Launching: class PgActivityHelper - method waitUntilPageIsLoaded()");
         LogLog4j.info(">> Waiting until all activity records are visible...");
         waitUntilAllElementsAreVisible(activityRecordsList, 10);
-    }
-
-    public String getLatestActivityRecordText() {
-        return activityRecordsList.get(0).getText();
     }
 
 }

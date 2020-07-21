@@ -58,7 +58,8 @@ public class PgLoginHelper extends PageBase {
         LogLog4j.info(">> Filling 'loginField', value '" + loginAtlassian + "'");
         fillField(loginField, loginAtlassian);
 
-        LogLog4j.info(">> Waiting until the text on 'loginButton' is 'Log in with Atlassian'...");
+        LogLog4j.info(">> Waiting until the text on 'loginButton' " +
+                "is 'Log in with Atlassian'...");
         waitUntilAttributeValueIs(loginButton,
                 "value", "Log in with Atlassian", 3);
         LogLog4j.info(">> Clicking on 'loginButton'");
@@ -169,10 +170,5 @@ public class PgLoginHelper extends PageBase {
         LogLog4j.info(">> Waiting until error message for non-valid password is visible...");
         waitUntilElementIsVisible(errorMessageForNonValidPassword, 5);
     }
-
-    //TODO LogLog4j project-level logging completion control
-    //TODO LogLog4j indent symbols (>>, >) control
-    //TODO string length control (95)
-    //TODO verify method names in LogLog4j (in helper classes)
 
 }

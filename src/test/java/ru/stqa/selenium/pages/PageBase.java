@@ -112,7 +112,8 @@ public abstract class PageBase {
         }
     }
 
-    public void waitUntilAttributeValueIs(WebElement element, String attribute, String value, int time) {
+    public void waitUntilAttributeValueIs(
+            WebElement element, String attribute, String value, int time) {
         try {
             new WebDriverWait(driver, time)
                     .until(ExpectedConditions.attributeToBe(element, attribute, value));

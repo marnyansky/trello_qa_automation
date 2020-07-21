@@ -43,8 +43,9 @@ public class ProfileTests extends TestBase {
                 "equal to the abbreviation in the circle under the page header bar");
         Assert.assertEquals(profilePage.getLabelTextFromRightUpperButton(),
                 profilePage.getLabelTextFromMiddleCircle(),
-                "Error! The abbreviation on the member menu button doesn't match " +
-                        "the abbreviation inside the circle located next to the profile name");
+                "Error! The abbreviation on the member menu button " +
+                        "doesn't match the abbreviation inside the circle " +
+                        "located next to the profile name");
         LogLog4j.endTestCase();
     }
 

@@ -30,7 +30,8 @@ public class PgHomePageHelper extends PageBase {
     }
 
     public String getTextOfAboutLinkInFooter() {
-        LogLog4j.info("> Launching: class PgHomePageHelper - method getTextOfAboutLinkInFooter()");
+        LogLog4j.info("> Launching: class PgHomePageHelper - " +
+                "method getTextOfAboutLinkInFooter()");
         LogLog4j.info(">> Getting text of 'About' link in the footer...");
         return aboutLinkInFooter.getText();
     }
@@ -49,7 +50,8 @@ public class PgHomePageHelper extends PageBase {
     }
 
     public void waitUntilPageIsFullyLoaded() {
-        LogLog4j.info("> Launching: class PgHomePageHelper - method waitUntilPageIsFullyLoaded()");
+        LogLog4j.info("> Launching: class PgHomePageHelper - " +
+                "method waitUntilPageIsFullyLoaded()");
         LogLog4j.info(">> Waiting until 'Sign up it's free' button is clickable...");
         waitUntilElementIsClickable(signUpItsFreeButton, 15);
         LogLog4j.info(">> Waiting until language selection dropdown menu is clickable...");
