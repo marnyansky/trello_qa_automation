@@ -22,7 +22,7 @@ public class ListenerMethodsImpl extends AbstractWebDriverEventListener {
         ScreenshotTool scrTool = new ScreenshotTool(driver);
         scrTool.saveScreenshot();
         LogLog4j.error("Error: " + throwable + " See screenshot file '"
-                + scrTool.getScreenshotFileName() + "' for details");
+                + scrTool.getScreenshotName() + "' for details");
     }
 
 }

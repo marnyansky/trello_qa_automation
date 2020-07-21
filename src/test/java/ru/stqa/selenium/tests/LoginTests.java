@@ -110,7 +110,6 @@ public class LoginTests extends TestBase {
     public void loginNonValidPasswordTestNegativeDp(String login, String password) {
         loginPage.loginAsAtlassian(login, password)
                 .waitUntilErrorMessageForNonValidPassword();
-
         Assert.assertTrue(loginPage.getErrorMessageForNonValidPassword()
                         .contains("Incorrect email address and / or password."),
                 "Error! No error message displayed or it's text is incorrect!");

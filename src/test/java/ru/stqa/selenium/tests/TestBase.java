@@ -77,7 +77,7 @@ public abstract class TestBase {
         if (result.getStatus() == ITestResult.FAILURE) {
             ScreenshotTool scrTool = new ScreenshotTool(driver);
             LogLog4j.error("Test failure. See screenshot file "
-                    + scrTool.getScreenshotFileName() + " for details");
+                    + scrTool.getScreenshotName() + " for details");
         }
         driver.quit();
     }

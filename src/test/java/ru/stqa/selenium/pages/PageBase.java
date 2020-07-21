@@ -12,8 +12,6 @@ import java.util.Set;
 
 public abstract class PageBase {
 
-    //TODO use CSS selectors in helper classes instead of xpath selectors (if possible)
-
     WebDriver driver;
 
     //--- CTOR

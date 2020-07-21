@@ -30,8 +30,8 @@ public class ScreenshotTool {
         return sdf.format(currentDate);
     }
 
-    public String getScreenshotFileName() {
-        return screenshotFileName;
+    public String getScreenshotName() {
+        return screenshot.getName();
     }
 
     public void saveScreenshot() {
