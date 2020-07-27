@@ -5,7 +5,7 @@
         <groups>
             <run>
                 <include name="smoke"/>
-                <exclude name="regression"/>
+<!--                <exclude name="regression"/>-->
             </run>
         </groups>
         <classes>
