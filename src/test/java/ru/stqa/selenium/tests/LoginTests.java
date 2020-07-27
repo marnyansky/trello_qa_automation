@@ -18,7 +18,7 @@ public class LoginTests extends TestBase {
     private SecHeaderHelper header;
     private SecMemberMenuHelper memberMenu;
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void initTests() {
         LogLog4j.info("===== Setting up LoginTests environment - method initTests()");
         loginPage = PageFactory.initElements(driver, PgLoginHelper.class);
@@ -32,7 +32,7 @@ public class LoginTests extends TestBase {
         LogLog4j.info("===== LoginTests environment setup complete");
     }
 
-    @Test(groups = "SmokeTesting")
+    @Test(groups = {"login", "regression", "smoke"})
     public void loginAtlassianTestPositive() {
         LogLog4j.startTestCase("loginAtlassianTestPositive");
         LogLog4j.info("Entering LOGIN_ATLASSIAN ('" + LOGIN_ATLASSIAN + "') " +

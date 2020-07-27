@@ -15,7 +15,7 @@ public class GuideTests extends TestBase {
     private SecHelpHelper helpSection;
     private PgGuideHelper guidePage;
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void initTests() {
         LogLog4j.info("===== Setting up GuideTests environment - method initTests()");
         loginPage = PageFactory.initElements(driver, PgLoginHelper.class);
@@ -41,7 +41,7 @@ public class GuideTests extends TestBase {
     }
 
 
-    @Test
+    @Test(groups = {"guide", "regression", "smoke"})
     public void verifyGuidePageTitleTest() {
         LogLog4j.startTestCase("verifyGuidePageTitleTest");
         LogLog4j.info("Switching to 'Getting Started Guide' page and " +

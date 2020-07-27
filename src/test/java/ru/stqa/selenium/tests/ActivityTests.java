@@ -17,7 +17,7 @@ public class ActivityTests extends TestBase {
     private SecMemberMenuHelper memberMenu;
     private PgActivityHelper activityPage;
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void initTests() {
         LogLog4j.info("===== Setting up ActivityTests environment - method initTests()");
         loginPage = PageFactory.initElements(driver, PgLoginHelper.class);
@@ -41,7 +41,7 @@ public class ActivityTests extends TestBase {
         LogLog4j.info("===== ActivityTests environment setup complete");
     }
 
-    @Test(groups = "SmokeTesting",
+    @Test(groups = {"activity", "regression", "smoke"},
             dataProviderClass = DataProviders.class, dataProvider = "dataProviderFourth")
     public void newEventIsInActivityTabTest(String listTitle) {
         LogLog4j.startTestCase("newEventIsInActivityTabTest: '"

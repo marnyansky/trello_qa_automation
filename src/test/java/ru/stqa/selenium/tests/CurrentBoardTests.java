@@ -16,7 +16,7 @@ public class CurrentBoardTests extends TestBase {
     private PgBoardsHelper boardsPage;
     private PgCurrentBoardHelper currentBoardPage;
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void initTests() {
         LogLog4j.info("===== Setting up CurrentBoardTests environment - method initTests()");
         loginPage = PageFactory.initElements(driver, PgLoginHelper.class);
@@ -37,7 +37,7 @@ public class CurrentBoardTests extends TestBase {
         LogLog4j.info("===== CurrentBoardTests environment setup complete");
     }
 
-    @Test(groups = "SmokeTesting")
+    @Test(groups = {"current_board", "regression", "smoke"})
     public void createNewListTest() {
         LogLog4j.startTestCase("createNewListTest");
         LogLog4j.info("Getting initial number of lists in the current board");

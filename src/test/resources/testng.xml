@@ -1,9 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Tests" verbose="5">
-  <test name="Test1">
-    <classes>
-      <!--<class name="ru.stqa.selenium.SampleTestNgTest"/>-->
-    </classes>
-  </test>  
+    <test name="smoke, exclude regression" enabled="true">
+        <groups>
+            <run>
+                <include name="smoke"/>
+                <exclude name="regression"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="ru.stqa.selenium.tests.HomePageTests"/>
+            <class name="ru.stqa.selenium.tests.LoginTests"/>
+        </classes>
+    </test>
+
+    <test name="regression" enabled="false">
+        <groups>
+            <run>
+                <include name="regression"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="ru.stqa.selenium.tests.HomePageTests"/>
+            <class name="ru.stqa.selenium.tests.LoginTests"/>
+        </classes>
+    </test>
+
+    <test name="smoke" enabled="false">
+        <groups>
+            <run>
+                <include name="smoke"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="ru.stqa.selenium.tests.HomePageTests"/>
+            <class name="ru.stqa.selenium.tests.LoginTests"/>
+        </classes>
+    </test>
 </suite>

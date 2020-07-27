@@ -15,7 +15,7 @@ public class ProfileTests extends TestBase {
     SecHeaderHelper header;
     SecMemberMenuHelper memberMenu;
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void initTests() {
         LogLog4j.info("===== Setting up ProfileTests environment - method initTests()");
         loginPage = PageFactory.initElements(driver, PgLoginHelper.class);
@@ -49,7 +49,7 @@ public class ProfileTests extends TestBase {
         LogLog4j.endTestCase();
     }
 
-    @Test(groups = "SmokeTesting")
+    @Test(groups = {"profile", "regression", "smoke"})
     public void verifyUserNameTest() {
         LogLog4j.startTestCase("verifyUserNameTest");
         LogLog4j.info("Performing test result verification (assert): " +

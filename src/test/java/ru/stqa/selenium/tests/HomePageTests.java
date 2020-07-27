@@ -11,7 +11,7 @@ public class HomePageTests extends TestBase {
 
     private PgHomePageHelper homePage;
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void initTests() {
         LogLog4j.info("===== Setting up HomePageTests environment - method initTests()");
         homePage = PageFactory.initElements(driver, PgHomePageHelper.class);
@@ -32,7 +32,7 @@ public class HomePageTests extends TestBase {
         LogLog4j.endTestCase();
     }
 
-    @Test(groups = "SmokeTesting")
+    @Test(groups = {"homepage", "regression", "smoke"})
     public void verifyAboutLinkInFooterTextAdvancedTest() {
         LogLog4j.startTestCase("verifyAboutLinkInFooterTextAdvancedTest");
         LogLog4j.info("Scrolling down the current page (homepage) to 'About' link");

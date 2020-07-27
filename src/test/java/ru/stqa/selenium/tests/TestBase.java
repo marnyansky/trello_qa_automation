@@ -33,7 +33,7 @@ public abstract class TestBase {
     public static final String PASSWORD_ATLASSIAN = "validPasswordForAtlassianLogin";
     public static final String USERNAME = "aryehtest";
 
-    @BeforeSuite
+    @BeforeSuite(alwaysRun = true)
     public void initTestSuite() throws IOException {
         SuiteConfiguration config = new SuiteConfiguration();
         baseUrl = config.getProperty("site.url");
@@ -43,7 +43,7 @@ public abstract class TestBase {
         capabilities = config.getCapabilities();
     }
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void initWebDriver() {
         myListener = new ListenerMethodsImpl();
         driver = new EventFiringWebDriver(
@@ -75,7 +75,7 @@ public abstract class TestBase {
         return options;
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void tearDownForTest(ITestResult result) {
         if (result.getStatus() == ITestResult.FAILURE) {
             ScreenshotTool scrTool = new ScreenshotTool(driver);
