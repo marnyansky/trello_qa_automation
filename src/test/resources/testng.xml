@@ -1,22 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<!--<suite name="Tests" thread-count="1" verbose="5">-->
-<!--<suite name="Tests" thread-count="2" verbose="5" parallel="methods">-->
-<suite name="Tests" thread-count="2" verbose="5" parallel="classes">
+<suite name="Tests" thread-count="1" verbose="5">
+    <!--<suite name="Tests" thread-count="2" verbose="5" parallel="classes">-->
     <test name="smoke" enabled="true">
         <groups>
             <run>
                 <include name="smoke"/>
-<!--                <exclude name="regression"/>-->
+                <!--                <exclude name="regression"/>-->
             </run>
         </groups>
         <classes>
-            <class name="ru.stqa.selenium.tests.HomePageTests"/>
+            <class name="ru.stqa.selenium.tests.HomePageTests">
+                <methods>
+                    <include name="verifyAboutLinkInFooterTextTest"/>
+                    <include name="verifyAboutLinkInFooterTextAdvancedTest"/>
+                </methods>
+            </class>
             <class name="ru.stqa.selenium.tests.LoginTests"/>
             <class name="ru.stqa.selenium.tests.CurrentBoardTests"/>
             <class name="ru.stqa.selenium.tests.ActivityTests"/>
             <class name="ru.stqa.selenium.tests.ProfileTests"/>
-<!--            <class name="ru.stqa.selenium.tests.GuideTests"/>-->
+            <!--            <class name="ru.stqa.selenium.tests.GuideTests"/>-->
         </classes>
     </test>
 
